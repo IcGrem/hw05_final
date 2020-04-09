@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Профиль пользователя {{ profile.get_full_name }} {% endblock %}
+{% block content%}
+<main role="main" class="container">
+    <div class="row">
+        {% include "left_box.html" with post=post %}
+        <div class="col-md-9">
+                <!-- Начало блока с отдельным постом --> 
+                {% for post in page %}
+                {% include "post_item.html" with post=post %}
+                {% endfor %}
+            <!-- Конец блока с отдельным постом --> 
+
+                 {% if page.has_other_pages %}
+                        {% include "paginator.html" with items=page paginator=paginator%}
+                {% endif %}
+                <!-- Остальные посты -->  
+                <!-- Здесь постраничная навигация паджинатора -->
+        </div>
+    </div>
+</main>
+{% endblock%}

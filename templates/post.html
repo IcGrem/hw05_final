@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Запись пользователя {{ post.profile.get_full_name }} {% endblock %}
+{% block content%}
+<main role="main" class="container">
+    <div class="row">
+        {% include "left_box.html" with post=post %}
+        <div class="col-md-9">
+            <!-- Пост -->  
+            {% include "post_item.html" with post=post %}
+            {% include "comments.html" %}
+    </div>
+</main>
+{% endblock%}

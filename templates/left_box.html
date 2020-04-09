@@ -1,0 +1,52 @@
+<div class="col-md-3 mb-3 mt-1">
+    <div class="card">
+            <div class="card-body">
+                    <div class="h2">
+                        <!-- Имя автора -->
+                        {{ profile.get_full_name }}
+                    </div>
+                    <div class="h3 text-muted">
+                         <!-- username автора user.username user.following.count user.follower.count-->
+                        {{ profile }}
+                    </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                            <div class="h6 text-muted">
+                            Подписчиков: {{ profile.following.count }} <br />
+                            Подписан на: {{ profile.follower.count }}
+                            </div>
+                    </li>
+                    <li class="list-group-item">
+                        {% if user.is_authenticated %}
+                        {% if user == profile %}
+                        <a class="btn btn-lg btn-primary" 
+                                href="{% url 'profile' profile.username %}" role="button">
+                        Перейти в профиль
+                        </a>
+                        {% else %}
+
+                        {% if following %}
+                                <a class="btn btn-lg btn-light" 
+                                        href="{% url 'profile_unfollow' profile.username %}" role="button"> 
+                                        Отписаться от {{ profile.username }}
+                                </a> 
+                                {% else %}
+                                <a class="btn btn-lg btn-primary" 
+                                        href="{% url 'profile_follow' profile.username %}" role="button">
+                                Подписаться на {{ profile.username }}
+                                </a>
+                                {% endif %}
+                        {% endif %}
+                        {% endif %}
+                     </li>
+                    
+                    <li class="list-group-item">
+                            <div class="h6 text-muted">
+                                <!-- Количество записей -->
+                                Записей: {{ post_count }}
+                            </div>
+                    </li>
+            </ul>
+    </div>
+</div>
