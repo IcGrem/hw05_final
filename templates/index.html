@@ -3,7 +3,7 @@
 {% load cache %}
 {% block content %}
     <div class="container">
-        {% include "menu.html" with index=True %}
+        {% include "menu.html" with follow=True %}
            <h1> Последние обновления на сайте</h1>
             <!-- Вывод ленты записей -->
             {% cache 20 index_page page %}
