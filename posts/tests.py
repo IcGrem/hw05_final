@@ -90,7 +90,6 @@ class CommFollTest(TestCase):
                                  content_type='image/png')
         self.client.post('/new/', {"text": self.text, 'image': img})
         post = Post.objects.get(text=self.text)
-        #post_id = Post.objects.get(text=self.text).id
         response = self.client.get(f'/{self.username}/{post.id}/')
         self.assertContains(response, 'img')
 
@@ -125,6 +124,7 @@ class CommFollTest(TestCase):
         self.client.post(f'/{self.author}/follow/')
         cnt = self.author.following.count()
         self.assertIsNotNone(cnt)
+
 
     def test_new_user_unfollow(self):
         self.client.force_login(self.username)
