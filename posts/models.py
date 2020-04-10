@@ -17,11 +17,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post_author")
     group = models.ForeignKey(Group, blank=True, null=True, on_delete=models.CASCADE, related_name="group")
     image = models.ImageField(upload_to='posts/', blank=True, null=True)
-
     def __str__(self):
         return str(self.id)
-    def __str__(self):
-        return self.text
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comment")

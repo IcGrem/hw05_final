@@ -13,7 +13,7 @@
                     <a name="post_{{ post.id }}" href="{% url 'profile' post.author.username %}">
                             <strong class="d-block text-gray-dark">@{{ post.author }}</strong>
                     </a>
-                    {{ post.text|linebreaksbr }}
+                    <a name="post_{{ post.id }}" href="{% url 'post' post.author.username post.id %}" style="text-decoration: none; color:black;">{{ post.text|linebreaksbr }}</a>
             </p>
 
             <!-- Если пост относится к какому-нибудь сообществу, то отобразим ссылку на него через # -->
