@@ -17,8 +17,9 @@
                             Подписан на: {{ profile.follower.count }}
                             </div>
                     </li>
+                    {% if user.is_authenticated %}                    
                     <li class="list-group-item">
-                        {% if user.is_authenticated %}
+
                         {% if user == profile %}
                         <a class="btn btn-lg btn-primary" 
                                 href="{% url 'profile' profile.username %}" role="button">
@@ -38,8 +39,8 @@
                                 </a>
                                 {% endif %}
                         {% endif %}
-                        {% endif %}
                      </li>
+                     {% endif %}
                     
                     <li class="list-group-item">
                             <div class="h6 text-muted">
